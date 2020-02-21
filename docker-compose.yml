@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  server:
+    build: './api'
+    expose:
+      - 3000
+    environment:
+      api_host: 'http://localhost:3000/graphql'
+      api_server_port: 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - /api/src:/srv/app/server/src
+    command: npm run start
+  
+  
+  client:
+    build: './client'
+    expose:
+      - 4200
+    environment:
+      - ANGULAr_APP_PORT=4200
+    ports:
+      - 4200:4200
+    volumes:
+      - ./api/src:/srv/app/client/src
+    command: npm run start
