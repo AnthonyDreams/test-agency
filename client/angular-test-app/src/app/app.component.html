@@ -1,0 +1,7 @@
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit(order)">
+  <formly-form [model]="order" [fields]="orderFields">
+    <button mat-raised-button color="primary" type="submit">
+      Submit
+    </button>
+  </formly-form>
+</form>
