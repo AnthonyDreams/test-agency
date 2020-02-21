@@ -1,0 +1,13 @@
+FROM node:10.16.3
+
+RUN mkdir -p /srv/app/serve
+WORKDIR /srv/app/serve
+
+COPY package.json /srv/app/serve
+COPY package-lock.json /srv/app/serve
+
+RUN npm install 
+
+COPY . /srv/app/serve
+
+CMD ['npm', 'run', 'start']
